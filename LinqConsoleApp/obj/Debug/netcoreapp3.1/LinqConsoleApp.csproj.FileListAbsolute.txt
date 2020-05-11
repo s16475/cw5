@@ -1,0 +1,12 @@
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/bin/Debug/netcoreapp3.1/LinqConsoleApp
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/bin/Debug/netcoreapp3.1/LinqConsoleApp.deps.json
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/bin/Debug/netcoreapp3.1/LinqConsoleApp.runtimeconfig.json
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/bin/Debug/netcoreapp3.1/LinqConsoleApp.runtimeconfig.dev.json
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/bin/Debug/netcoreapp3.1/LinqConsoleApp.dll
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/bin/Debug/netcoreapp3.1/LinqConsoleApp.pdb
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/obj/Debug/netcoreapp3.1/LinqConsoleApp.csprojAssemblyReference.cache
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/obj/Debug/netcoreapp3.1/LinqConsoleApp.AssemblyInfoInputs.cache
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/obj/Debug/netcoreapp3.1/LinqConsoleApp.AssemblyInfo.cs
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/obj/Debug/netcoreapp3.1/LinqConsoleApp.dll
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/obj/Debug/netcoreapp3.1/LinqConsoleApp.pdb
+/home/grzesiek/Pobrane/LinqConsoleApp/LinqConsoleApp/obj/Debug/netcoreapp3.1/LinqConsoleApp.genruntimeconfig.cache

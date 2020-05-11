@@ -205,8 +205,21 @@ namespace LinqConsoleApp
                           Zawod = emp.Job
                       };
 
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
 
             //2. Lambda and Extension methods
+
+            var res1 = Emps.Where(a => a.Job == "Backend programmer").ToList();
+
+            //wyswietlanie wynikow
+            foreach (var r in res1)
+            {
+                Console.WriteLine(r);
+            }
         }
 
         /// <summary>
