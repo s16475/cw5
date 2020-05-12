@@ -213,7 +213,7 @@ namespace LinqConsoleApp
 
             //2. Lambda and Extension methods
 
-            var res1 = Emps.Where(a => a.Job == "Backend programmer").ToList();
+            var res1 = Emps.Where(a => a.Job == "Backend programmer").Select(a => new { a.Ename, a.Job });
 
             //wyswietlanie wynikow
             foreach (var r in res1)
@@ -227,7 +227,33 @@ namespace LinqConsoleApp
         /// </summary>
         public void Przyklad2()
         {
-            
+            //1. Query syntax (SQL)
+
+            var res = from emp in Emps
+                      where emp.Job == "Frontend programmer" && emp.Salary > 1000
+                      orderby emp.Ename descending
+                      select new
+                      {
+                          Nazwisko = emp.Ename,
+                          Zawod = emp.Job
+                      };
+
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
+
+            //2. Lambda and Extension methods
+
+            var res1 = Emps.Where(a => a.Job == "Frontend programmer" && a.Salary > 1000).OrderByDescending(b => b.Ename)
+            .Select(a => new { a.Ename, a.Job });
+
+            //wyswietlanie wynikow
+            foreach (var r in res1)
+            {
+                Console.WriteLine(r);
+            }
 
         }
 

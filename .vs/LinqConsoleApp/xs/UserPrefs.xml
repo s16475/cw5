@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{BBCF6EB6-CE2E-4972-B649-A8BAB44C9B51}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="LinqConsoleApp/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LinqConsoleApp/LinqSamples.cs">
     <Files>
       <File FileName="LinqConsoleApp/Dept.cs" Line="1" Column="1" />
       <File FileName="LinqConsoleApp/Emp.cs" Line="1" Column="1" />
-      <File FileName="LinqConsoleApp/LinqSamples.cs" Line="207" Column="1" />
+      <File FileName="LinqConsoleApp/LinqSamples.cs" Line="218" Column="35" />
       <File FileName="LinqConsoleApp/Program.cs" Line="12" Column="1" />
     </Files>
     <Pads>
@@ -11,7 +11,7 @@
         <State name="__root__">
           <Node name="LinqConsoleApp" expanded="True">
             <Node name="LinqConsoleApp" expanded="True">
-              <Node name="Program.cs" selected="True" />
+              <Node name="LinqSamples.cs" selected="True" />
             </Node>
           </Node>
         </State>
