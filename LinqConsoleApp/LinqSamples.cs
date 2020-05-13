@@ -262,14 +262,48 @@ namespace LinqConsoleApp
         /// </summary>
         public void Przyklad3()
         {
-          
+            //1. Query syntax (SQL)
+            var max = (from emp in Emps select emp.Salary).Max();
+            Console.WriteLine(max);
+
+
+            //2. Lambda and Extension methods
+            var max1 = Emps.Max(emp => emp.Salary);
+            Console.WriteLine(max1);
+
         }
+
+
 
         /// <summary>
         /// SELECT * FROM Emps WHERE Salary=(SELECT MAX(Salary) FROM Emps);
         /// </summary>
         public void Przyklad4()
         {
+            //1. Query syntax (SQL)
+
+            var res = from emp in Emps
+                      where emp.Salary == (from emp2 in Emps select emp2.Salary).Max()
+                      select new
+                      {
+                          Nazwisko = emp.Ename,
+                          Zawod = emp.Job
+                      };
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
+
+            //2. Lambda and Extension methods
+
+            var res1 = Emps.Where(a => a.Salary == Emps.Max(emp1 => emp1.Salary)).Select(a => new { a.Ename, a.Job });
+
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
 
         }
 
@@ -278,7 +312,28 @@ namespace LinqConsoleApp
         /// </summary>
         public void Przyklad5()
         {
+            //1. Query syntax (SQL)
+            var res = from emp in Emps
+                      select new
+                      {
+                          Nazwisko = emp.Ename,
+                          Praca = emp.Job
+                      };
 
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
+
+            //2. Lambda and Extension methods
+
+            var res1 = Emps.Select(a => new { Nazwisko = a.Ename, Praca = a.Job });
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
         }
 
         /// <summary>
@@ -288,6 +343,33 @@ namespace LinqConsoleApp
         /// </summary>
         public void Przyklad6()
         {
+            //1. Query syntax (SQL)
+
+            var res = from emp in Emps
+                      join dept in Depts on emp.Deptno equals dept.Deptno
+                      select new
+                      {
+                          emp.Ename,
+                          emp.Job,
+                          dept.Dname
+                      };
+
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
+
+            //2. Lambda and Extension methods
+
+            var res1 = Emps.Join(Depts, emp => emp.Deptno, dept => dept.Deptno, (emp, dept) => new { emp.Ename, emp.Job, dept.Dname });
+
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
+
 
         }
 
@@ -296,7 +378,28 @@ namespace LinqConsoleApp
         /// </summary>
         public void Przyklad7()
         {
+            //1. Query syntax (SQL)
 
+            var count = (from emp in Emps
+                         select emp).Count();
+
+            var res = from emp in Emps
+                      group emp by emp.Job into groups
+                      select new
+                      {
+                          Praca = groups,
+                          count
+                      };
+
+
+
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
+
+            //2. Lambda and Extension methods
         }
 
         /// <summary>
@@ -305,7 +408,10 @@ namespace LinqConsoleApp
         /// </summary>
         public void Przyklad8()
         {
+            //1. Query syntax (SQL)
 
+
+            //2. Lambda and Extension methods
         }
 
         /// <summary>
@@ -314,7 +420,10 @@ namespace LinqConsoleApp
         /// </summary>
         public void Przyklad9()
         {
+            //1. Query syntax (SQL)
 
+
+            //2. Lambda and Extension methods
         }
 
         /// <summary>
@@ -324,20 +433,29 @@ namespace LinqConsoleApp
         /// </summary>
         public void Przyklad10Button_Click()
         {
+            //1. Query syntax (SQL)
 
+
+            //2. Lambda and Extension methods
         }
 
         //Znajdź pracownika z najwyższą pensją wykorzystując metodę Aggregate()
         public void Przyklad11()
         {
+            //1. Query syntax (SQL)
 
+
+            //2. Lambda and Extension methods
         }
 
         //Z pomocą języka LINQ i metody SelectMany wykonaj złączenie
         //typu CROSS JOIN
         public void Przyklad12()
         {
+            //1. Query syntax (SQL)
 
+
+            //2. Lambda and Extension methods
         }
     }
 }
