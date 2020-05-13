@@ -14,12 +14,12 @@ namespace LinqConsoleApp
             //d.Przyklad4();
             //d.Przyklad5();
             //d.Przyklad6();
-            d.Przyklad7();
+            //d.Przyklad7();
             //d.Przyklad8();
             //d.Przyklad9();
             //d.Przyklad10();
             //d.Przyklad11();
-            //d.Przyklad12();
+            d.Przyklad12();
 
         }
     }

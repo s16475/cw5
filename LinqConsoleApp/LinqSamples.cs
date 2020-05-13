@@ -380,18 +380,13 @@ namespace LinqConsoleApp
         {
             //1. Query syntax (SQL)
 
-            var count = (from emp in Emps
-                         select emp).Count();
-
             var res = from emp in Emps
                       group emp by emp.Job into groups
                       select new
                       {
-                          Praca = groups,
-                          count
+                          Praca = groups.Key,
+                          LiczbaPracownikow = groups.Count()
                       };
-
-
 
             //wyswietlanie wynikow
             foreach (var r in res)
@@ -400,6 +395,20 @@ namespace LinqConsoleApp
             }
 
             //2. Lambda and Extension methods
+
+            var res1 = Emps.GroupBy(emp => emp.Job)
+                       .Select(group => new
+                       {
+                           Praca = group.Key,
+                           LiczbaPracownikow = group.Count()
+                       });
+
+            //wyswietlanie wynikow
+            foreach (var r in res1)
+            {
+                Console.WriteLine(r);
+            }
+
         }
 
         /// <summary>
@@ -410,8 +419,20 @@ namespace LinqConsoleApp
         {
             //1. Query syntax (SQL)
 
+            var res = (from emp in Emps
+                        where emp.Job == "Backend programmer"
+                        select emp).Any();
+
+            //wyswietlanie wynikow
+            Console.WriteLine(res);
 
             //2. Lambda and Extension methods
+
+            var res1 = Emps.Any(emp => emp.Job == "Backend programmer");
+
+            //wyswietlanie wynikow
+            Console.WriteLine(res1);
+
         }
 
         /// <summary>
@@ -421,9 +442,21 @@ namespace LinqConsoleApp
         public void Przyklad9()
         {
             //1. Query syntax (SQL)
+            var res = (from emp in Emps
+                       where emp.Job == "Frontend programmer"
+                       orderby emp.HireDate descending
+                       select emp).First();
 
+            //wyswietlanie wynikow
+            Console.WriteLine(res);
 
             //2. Lambda and Extension methods
+
+            var res1 = Emps.Where(e => e.Job == "Frontend programmer").OrderByDescending(emp => emp.HireDate).First();
+
+            //wyswietlanie wynikow
+            Console.WriteLine(res1);
+
         }
 
         /// <summary>
@@ -431,31 +464,67 @@ namespace LinqConsoleApp
         /// UNION
         /// SELECT "Brak wartości", null, null;
         /// </summary>
-        public void Przyklad10Button_Click()
+        public void Przyklad10()
         {
             //1. Query syntax (SQL)
+            var res = from emp in Emps.Union(new List<Emp> { new Emp { Ename = "Brak wartości", Job = null, HireDate = null } })
+                      select new
+                      {
+                          emp.Ename,
+                          emp.Job,
+                          emp.HireDate
+                      };
 
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
 
             //2. Lambda and Extension methods
+
+            var res1 = Emps.Union(new List<Emp> { new Emp { Ename = "Brak wartości", Job = null, HireDate = null } })
+                .Select(e => new { e.Ename, e.Job, e.HireDate });
+
+            //wyswietlanie wynikow
+            foreach (var r in res1)
+            {
+                Console.WriteLine(r);
+            }
+
+
         }
 
         //Znajdź pracownika z najwyższą pensją wykorzystując metodę Aggregate()
         public void Przyklad11()
         {
-            //1. Query syntax (SQL)
+           
+            var res = Emps.Aggregate((r, next) =>
+            {
+                if (r.Salary < next.Salary) return next;
+                else return r;
+            });
 
-
-            //2. Lambda and Extension methods
+            //wyswietlanie wynikow
+            Console.WriteLine(res);
         }
 
         //Z pomocą języka LINQ i metody SelectMany wykonaj złączenie
         //typu CROSS JOIN
         public void Przyklad12()
         {
-            //1. Query syntax (SQL)
 
+            var res = Emps.SelectMany(e => Depts, (e, d) => new
+            {
+                e.Ename,
+                d.Dname
+            });
 
-            //2. Lambda and Extension methods
+            //wyswietlanie wynikow
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
         }
     }
 }
